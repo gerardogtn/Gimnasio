@@ -15,8 +15,8 @@ int Maquina::machineCount = 0;
 // MODIFIES: os.
 //  EFFECTS: Overloads the output stream operator.
 ostream & operator<<(ostream & os, const Maquina & machine){
-    os << "La maquina " << machine.machineID << " llamada: " << machine.machineName;
-    os << "sirve para ejercitar: " << machine.getTipo();
+    os << machine.machineName << ". " << endl;
+    os << "          sirve para ejercitar: " << machine.getTipo();
     
     return os;//stub
 }
@@ -34,12 +34,14 @@ Maquina::MaquinaTipo Maquina::getTipo(string tipoString){
         output = MaquinaTipo::PECHO;
     } else if (tipoString == "espalda"){
         output = MaquinaTipo::ESPALDA;
-    }else if (tipoString == "brazo"){
+    } else if (tipoString == "brazo"){
         output = MaquinaTipo::BRAZO;
-    }else if (tipoString == "pierna"){
+    } else if (tipoString == "pierna"){
         output = MaquinaTipo::PIERNA;
-    }else if (tipoString == "abdomen"){
+    } else if (tipoString == "abdomen"){
         output = MaquinaTipo::ABDOMEN;
+    } else{
+        output = MaquinaTipo::NONE;
     }
     
     return output;
@@ -68,6 +70,9 @@ string Maquina::getTipo() const{
         case MaquinaTipo::ABDOMEN:
             output = "abdomen";
             break;
+        case MaquinaTipo::NONE:
+            output = "no especificado";
+            break;
             
         default:
             break;
@@ -77,7 +82,9 @@ string Maquina::getTipo() const{
 }
 
 
-
+bool Maquina::operator<(const Maquina machine) const{
+    return this->machineName < machine.machineName;
+}
 
 
 

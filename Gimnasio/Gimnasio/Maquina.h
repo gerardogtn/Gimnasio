@@ -19,7 +19,7 @@ class Maquina{
     friend ostream & operator<<(ostream & os, const Maquina & machine);
     
 public:
-    enum class MaquinaTipo {PECHO, ESPALDA, BRAZO, PIERNA, ABDOMEN};
+    enum class MaquinaTipo {NONE, PECHO, ESPALDA, BRAZO, PIERNA, ABDOMEN};
     
 private:
     string machineName = "Maquina sin nombre.";
@@ -41,6 +41,7 @@ public:
         machineID   = ++machineCount;
     };
     
+    bool operator<(const Maquina machine) const;
     
 };
 

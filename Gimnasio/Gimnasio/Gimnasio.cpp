@@ -45,6 +45,7 @@ void Gimnasio::printUsers() const{
     
     if (usuarios.empty()) {
         cout << "No existen usuarios" << endl;
+        cout << endl; 
         return;
     }
     
@@ -58,7 +59,7 @@ void Gimnasio::printUsers() const{
 
 
 
-/*
+
 // REQUIRES: None.
 // MODIFIES: None.
 //  EFFECTS: Prints to console the machines in this gym.
@@ -69,19 +70,20 @@ void Gimnasio::printMachines() const{
     
     if (maquinas.empty()) {
         cout << "No existen maquinas" << endl;
+        cout << endl;
         return;
     }
     
     
     for (auto m : maquinas) {
-        cout << "Existen " << m.second << " maquinas de: ";
+        cout << "Existen " << m.second << " maquinas de nombre: ";
         cout << m.first << endl; 
     }
     
     cout << endl;
 }
 
-*/
+
 
 
 // REQUIRES: None
@@ -104,7 +106,8 @@ void Gimnasio::addUser(const string userName, const string userLastName){
 // MODIFIES:
 //  EFFECTS:
 void Gimnasio::addMachine(const Maquina machine){
-    
+    maquinas[machine]++;
+    machineCount++;
 }
 
 
