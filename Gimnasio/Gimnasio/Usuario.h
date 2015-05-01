@@ -18,8 +18,8 @@ class Usuario{
     friend std::ostream & operator<<(std::ostream & os, Usuario & user);
     
 private:
-    std::string nombre = "Sin nombre.";
-    std::string apellido = "Sin apellido.";
+    std::string nombre = "Sin nombre";
+    std::string apellido = "Sin apellido";
     int userID;
     static int userCount;
     // list<Rutina> rutinas;
@@ -30,7 +30,7 @@ public:
         userID = ++userCount;
     };
     
-    int getUserID(){
+    int getUserID() const{
         return userID;
     }
     

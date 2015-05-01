@@ -16,7 +16,7 @@ int Maquina::machineCount = 0;
 //  EFFECTS: Overloads the output stream operator.
 ostream & operator<<(ostream & os, const Maquina & machine){
     os << machine.machineName << ". " << endl;
-    os << "          sirve para ejercitar: " << machine.getTipo();
+    os << "              sirve para ejercitar: " << machine.getTipo();
     
     return os;//stub
 }
@@ -87,7 +87,13 @@ bool Maquina::operator<(const Maquina machine) const{
 }
 
 
-
+bool Maquina::operator==(const Maquina machine) const{
+    bool output;
+    output = this->machineName == machine.machineName;
+    output = output && this->machineType == machine.machineType;
+    
+    return output;
+}
 
 
 

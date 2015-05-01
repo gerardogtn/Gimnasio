@@ -21,9 +21,9 @@ int Gimnasio::machineCount = 0;
 // MODIFIES: os.
 //  EFFECTS: Overloads stream output operator.
 ostream & operator<<(ostream & os, const Gimnasio & gym){
-    os << "--------------------------------------------------" << endl;
+    os << "-----------------------------------------------------------------" << endl;
     os << setw(25) << gym.gymName << ": " << endl;
-    os << "--------------------------------------------------" << endl;
+    os << "-----------------------------------------------------------------" << endl;
     
     
     os << "El gimnasio cuenta con " << gym.userCount << setw(12) << left << " usuarios." << endl;
@@ -39,9 +39,9 @@ ostream & operator<<(ostream & os, const Gimnasio & gym){
 // MODIFIES: None.
 //  EFFECTS: Prints to console the users of this gym.
 void Gimnasio::printUsers() const{
-    cout << "--------------------------------------------------" << endl;
+    cout << "-----------------------------------------------------------------" << endl;
     cout << "Los usuarios de "  << gymName << " son: " << endl;
-    cout << "--------------------------------------------------" << endl;
+    cout << "-----------------------------------------------------------------" << endl;
     
     if (usuarios.empty()) {
         cout << "No existen usuarios" << endl;
@@ -64,9 +64,9 @@ void Gimnasio::printUsers() const{
 // MODIFIES: None.
 //  EFFECTS: Prints to console the machines in this gym.
 void Gimnasio::printMachines() const{
-    cout << "--------------------------------------------------" << endl;
+    cout << "-----------------------------------------------------------------" << endl;
     cout << "Las maquinas de "  << gymName << " son: " << endl;
-    cout << "--------------------------------------------------" << endl;
+    cout << "-----------------------------------------------------------------" << endl;
     
     if (maquinas.empty()) {
         cout << "No existen maquinas" << endl;
@@ -76,7 +76,7 @@ void Gimnasio::printMachines() const{
     
     
     for (auto m : maquinas) {
-        cout << "Existen " << m.second << " maquinas de nombre: ";
+        cout << "Existe(n) " << setw(3) << m.second << " maquina(s) de nombre: ";
         cout << m.first << endl; 
     }
     
@@ -90,6 +90,13 @@ void Gimnasio::printMachines() const{
 // MODIFIES: usuarios
 //  EFFECTS: Adds user to usuarios.
 void Gimnasio::addUser(const Usuario user){
+    for(auto u :usuarios){
+        if  (u.getUserID() == user.getUserID()){
+            return; 
+        }
+    }
+    
+    
     usuarios.push_back(user);
     userCount++; 
 }

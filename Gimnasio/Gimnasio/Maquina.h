@@ -22,7 +22,7 @@ public:
     enum class MaquinaTipo {NONE, PECHO, ESPALDA, BRAZO, PIERNA, ABDOMEN};
     
 private:
-    string machineName = "Maquina sin nombre.";
+    string machineName = "Maquina sin nombre";
     int machineID;
     static int machineCount;
     
@@ -42,6 +42,7 @@ public:
     };
     
     bool operator<(const Maquina machine) const;
+    bool operator==(const Maquina machine) const; 
     
 };
 

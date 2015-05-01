@@ -14,11 +14,14 @@ int main(int argc, const char * argv[]) {
     Gimnasio sportsWorld("Sports world");
     
     Usuario A;
+    
     Usuario B("Juan", "Perez");
     
     Maquina AA;
     Maquina BB("chest-press", "pecho");
+    Maquina CC("chest-press", "pecho");
     
+    sportsWorld.addUser(A);
     sportsWorld.addUser(A);
     sportsWorld.addUser(B);
     sportsWorld.addUser("Andrea", "Rodriguez");
@@ -27,6 +30,7 @@ int main(int argc, const char * argv[]) {
     sportsWorld.addMachine(AA);
     sportsWorld.addMachine(BB);
     sportsWorld.addMachine(BB);
+    sportsWorld.addMachine(CC);
     
     std::cout << sportsWorld;
     
