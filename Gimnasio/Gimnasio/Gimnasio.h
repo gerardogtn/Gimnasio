@@ -41,12 +41,13 @@ public:
     Gimnasio(){};
     Gimnasio(string name) : gymName(name){};
     
-    void addUser(Usuario user);
-    void addUser(int userID);
-    void addNewUser(string userName, string userLastName);
+    void addUser(const Usuario user);
+    void addUser(const string userName, const string userLastName);
+    void addMachine(const Maquina machine);
     
-    void addMachine(Maquina machine);
     
+    void printUsers() const;
+    void printMachines() const;
     
 };
 

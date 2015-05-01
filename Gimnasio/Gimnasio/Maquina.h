@@ -18,14 +18,18 @@ using namespace std;
 class Maquina{
     friend ostream & operator<<(ostream & os, const Maquina & machine);
     
+public:
+    enum class MaquinaTipo {PECHO, ESPALDA, BRAZO, PIERNA, ABDOMEN};
+    
 private:
     string machineName = "Maquina sin nombre.";
     int machineID;
     static int machineCount;
-    enum class Tipo {PECHO, ESPALDA, HOMBRO, BICEP, TRICEP, PANTORRILLA, QUADRICEPS};
-    Tipo machineType;
     
-    Tipo getTipo(string tipoString);
+    MaquinaTipo machineType;
+    
+    MaquinaTipo getTipo(string tipoString);
+    string getTipo() const;
     
 public:
     Maquina(){
@@ -36,6 +40,7 @@ public:
         machineType = getTipo(tipoMaq);
         machineID   = ++machineCount;
     };
+    
     
 };
 
