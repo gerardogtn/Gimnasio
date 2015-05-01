@@ -8,8 +8,13 @@
 
 #include <iostream>
 
+#include "Gimnasio.h"
+
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    
+    Gimnasio sportsWorld("Sports world");
+    
+    std::cout << sportsWorld << std::endl;
+    
     return 0;
 }
