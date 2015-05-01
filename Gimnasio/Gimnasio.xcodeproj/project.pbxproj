@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		D43D20581AF3F93C0003813A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D43D20571AF3F93C0003813A /* main.cpp */; };
+		D43D20601AF3F97D0003813A /* Gimnasio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D43D205E1AF3F97D0003813A /* Gimnasio.cpp */; };
+		D43D20631AF3F9840003813A /* Usuario.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D43D20611AF3F9840003813A /* Usuario.cpp */; };
+		D43D20661AF3F98E0003813A /* Maquina.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D43D20641AF3F98E0003813A /* Maquina.cpp */; };
+		D43D20691AF3F9970003813A /* Rutina.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D43D20671AF3F9970003813A /* Rutina.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +29,14 @@
 /* Begin PBXFileReference section */
 		D43D20541AF3F93C0003813A /* Gimnasio */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Gimnasio; sourceTree = BUILT_PRODUCTS_DIR; };
 		D43D20571AF3F93C0003813A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		D43D205E1AF3F97D0003813A /* Gimnasio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Gimnasio.cpp; sourceTree = "<group>"; };
+		D43D205F1AF3F97D0003813A /* Gimnasio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gimnasio.h; sourceTree = "<group>"; };
+		D43D20611AF3F9840003813A /* Usuario.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Usuario.cpp; sourceTree = "<group>"; };
+		D43D20621AF3F9840003813A /* Usuario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Usuario.h; sourceTree = "<group>"; };
+		D43D20641AF3F98E0003813A /* Maquina.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Maquina.cpp; sourceTree = "<group>"; };
+		D43D20651AF3F98E0003813A /* Maquina.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Maquina.h; sourceTree = "<group>"; };
+		D43D20671AF3F9970003813A /* Rutina.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rutina.cpp; sourceTree = "<group>"; };
+		D43D20681AF3F9970003813A /* Rutina.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rutina.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +70,14 @@
 			isa = PBXGroup;
 			children = (
 				D43D20571AF3F93C0003813A /* main.cpp */,
+				D43D205E1AF3F97D0003813A /* Gimnasio.cpp */,
+				D43D205F1AF3F97D0003813A /* Gimnasio.h */,
+				D43D20611AF3F9840003813A /* Usuario.cpp */,
+				D43D20621AF3F9840003813A /* Usuario.h */,
+				D43D20641AF3F98E0003813A /* Maquina.cpp */,
+				D43D20651AF3F98E0003813A /* Maquina.h */,
+				D43D20671AF3F9970003813A /* Rutina.cpp */,
+				D43D20681AF3F9970003813A /* Rutina.h */,
 			);
 			path = Gimnasio;
 			sourceTree = "<group>";
@@ -118,7 +138,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D43D20691AF3F9970003813A /* Rutina.cpp in Sources */,
+				D43D20661AF3F98E0003813A /* Maquina.cpp in Sources */,
+				D43D20601AF3F97D0003813A /* Gimnasio.cpp in Sources */,
 				D43D20581AF3F93C0003813A /* main.cpp in Sources */,
+				D43D20631AF3F9840003813A /* Usuario.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
