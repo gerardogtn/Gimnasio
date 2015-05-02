@@ -25,6 +25,7 @@ private:
     static int userCount;
     int averageRepetition = 12;
     int restedFactor = 12;
+    int tiredDecrement = 1; 
     // list<Rutina> rutinas;
     
     void decrementRestedFactor(); 
@@ -34,9 +35,26 @@ public:
     Usuario(string name, string _apellido) : nombre(name), apellido(_apellido) {
         userID = ++userCount;
     };
+    Usuario(string name, string _apellido, int averageRep, int _tiredDec) : nombre(name), apellido(_apellido){
+        userID = ++userCount;
+        setAvgRep(averageRep);
+        setTiredFactor(_tiredDec);
+    };
     
     int getUserID() const{
         return userID;
+    }
+    
+    void setAvgRep(int averageRep){
+        if (averageRep > 2 && averageRep < 40) {
+            averageRepetition = averageRep;
+        }
+    }
+    
+    void setTiredFactor(int tiredness){
+        if (tiredness >= 1 && tiredness < averageRepetition){
+            tiredDecrement = tiredness;
+        }
     }
     
     void hacerEjercicio(const Maquina & machine); 

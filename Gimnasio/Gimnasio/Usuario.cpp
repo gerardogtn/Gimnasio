@@ -28,6 +28,10 @@ std::ostream & operator<<(std::ostream & os, Usuario & user){
 // MODIFIES: this->restedFactor.
 //  EFFECTS: Simulates exercising in a machine by printing to console.
 void Usuario::hacerEjercicio(const Maquina & machine){
+    if  (restedFactor <= 2){
+        cout << setw(10) << this->nombre << "esta demasiado cansado para hacer ejercicio" << endl;
+    }
+    
     cout << "-----------------------------------------------------------------" << endl;
     cout << setw(10) << this->nombre <<"esta usando la maquina de: "<< setw(3) << machine.getMachineName() << endl;
     cout << "-----------------------------------------------------------------" << endl;
@@ -54,9 +58,13 @@ void Usuario::hacerEjercicio(const Maquina & machine){
 // MODIFIES: this->restedFactor.
 //  EFFECTS: Decrements the rested factor.
 void Usuario::decrementRestedFactor(){
-    if (restedFactor >= 2) {
-        restedFactor--; 
+    int a = restedFactor - tiredDecrement;
+    if (a < 2) {
+        restedFactor = 2;
+    } else {
+        restedFactor = a;
     }
+    
 }
 
 
