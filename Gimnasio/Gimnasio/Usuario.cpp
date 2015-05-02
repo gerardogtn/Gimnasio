@@ -7,6 +7,7 @@
 //
 
 #include "Usuario.h"
+#include <unistd.h>
 
 int Usuario::userCount = 0; 
 
@@ -38,6 +39,7 @@ void Usuario::hacerEjercicio(const Maquina & machine){
     
     while (repetitions > 1) {
         cout << "Faltan " << setw(2)<< repetitions << " repeticiones por hacer " << endl;
+        sleep(1);
         repetitions = repetitions - (rand()%substraction + 1);
         substraction = repetitions;
     }
