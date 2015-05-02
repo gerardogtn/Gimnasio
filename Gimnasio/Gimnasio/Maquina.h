@@ -41,6 +41,10 @@ public:
         machineID   = ++machineCount;
     };
     
+    string getMachineName() const{
+        return machineName;
+    };
+    
     bool operator<(const Maquina machine) const;
     bool operator==(const Maquina machine) const; 
     

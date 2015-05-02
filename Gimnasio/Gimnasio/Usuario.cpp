@@ -22,3 +22,41 @@ std::ostream & operator<<(std::ostream & os, Usuario & user){
     
     return os; 
 }
+
+// REQUIRES: None.
+// MODIFIES: this->restedFactor.
+//  EFFECTS: Simulates exercising in a machine by printing to console.
+void Usuario::hacerEjercicio(const Maquina & machine){
+    cout << "-----------------------------------------------------------------" << endl;
+    cout << setw(10) << this->nombre <<"esta usando la maquina de: "<< setw(3) << machine.getMachineName() << endl;
+    cout << "-----------------------------------------------------------------" << endl;
+    
+    int repetitions = averageRepetition;
+    int substraction = restedFactor ;
+    substraction = substraction % (averageRepetition) + 1;
+    srand((unsigned) time(nullptr));
+    
+    while (repetitions > 1) {
+        cout << "Faltan " << setw(2)<< repetitions << " repeticiones por hacer " << endl;
+        repetitions = repetitions - (rand()%substraction + 1);
+        substraction = repetitions;
+    }
+    
+    cout << "Ejercicio finalizado \n" << endl;
+    decrementRestedFactor();
+    
+    
+}
+
+// REQUIRES: None.
+// MODIFIES: this->restedFactor.
+//  EFFECTS: Decrements the rested factor.
+void Usuario::decrementRestedFactor(){
+    if (restedFactor >= 2) {
+        restedFactor--; 
+    }
+}
+
+
+
+

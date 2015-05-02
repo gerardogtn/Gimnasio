@@ -39,6 +39,8 @@ int main(int argc, const char * argv[]) {
     sportsWorld.printMachines();
     sportsWorld.printUsers();
     
+    B.hacerEjercicio(BB); 
+    
     // Menú de Opciones para el Usuario
     int option=1;
     while (option!=6)
@@ -51,7 +53,7 @@ int main(int argc, const char * argv[]) {
         std::cout <<"5. Mostrar los Usuarios del Gimnasio\n";
         std::cout <<"6. Salir \n";
         std::cin >> option;
-        getInt(option);
+        option = getInt(option);
         switch (option)
         {
             case 1:
@@ -119,6 +121,6 @@ int getInt(int value)
         std::cin.clear();
         std::cin.ignore(1000, '\n');
         std::cin >> value;
-        getInt(value);
+        return getInt(value);
     }
 }

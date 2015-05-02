@@ -11,6 +11,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include "Maquina.h"
 
 using namespace std;
 
@@ -22,7 +23,11 @@ private:
     std::string apellido = "Sin apellido";
     int userID;
     static int userCount;
+    int averageRepetition = 12;
+    int restedFactor = 12;
     // list<Rutina> rutinas;
+    
+    void decrementRestedFactor(); 
     
 public:
     Usuario(){ userID = ++userCount; };
@@ -34,6 +39,7 @@ public:
         return userID;
     }
     
+    void hacerEjercicio(const Maquina & machine); 
 };
 
 
