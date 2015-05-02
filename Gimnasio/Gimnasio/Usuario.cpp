@@ -30,6 +30,7 @@ std::ostream & operator<<(std::ostream & os, Usuario & user){
 void Usuario::hacerEjercicio(const Maquina & machine){
     if  (restedFactor <= 2){
         cout << setw(10) << this->nombre << "esta demasiado cansado para hacer ejercicio" << endl;
+        return;
     }
     
     cout << "-----------------------------------------------------------------" << endl;
@@ -37,8 +38,7 @@ void Usuario::hacerEjercicio(const Maquina & machine){
     cout << "-----------------------------------------------------------------" << endl;
     
     int repetitions = averageRepetition;
-    int substraction = restedFactor ;
-    substraction = substraction % (averageRepetition) + 1;
+    int substraction = restedFactor - 1;
     srand((unsigned) time(nullptr));
     
     while (repetitions > 1) {
