@@ -100,5 +100,31 @@ void Usuario::printRutinas() const{
 }
 
 
+// REQUIRES: None.
+// MODIFIES: None.
+//  EFFECTS: Returns the position of a rutina in this->rutinas. If not found, returns -1.
+int  Usuario::findRutina(const int routineID) const{
+    int i = 0;
+    
+    if (rutinas.empty())
+    {
+        cout << "No hay rutinas registradas" <<endl;
+    }
+    
+    for(auto r: rutinas)
+    {
+        if (r.getRutinaID() == routineID) {
+            return i;
+        }
+        
+        i++;
+    }
+    
+    
+    return -1;
+}
+
+
+
 
 

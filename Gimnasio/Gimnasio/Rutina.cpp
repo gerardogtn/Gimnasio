@@ -9,20 +9,21 @@
 #include "Rutina.h"
 
 
+int Rutina::routineCount = 0;
+
 // REQUIRES: None.
 // MODIFIES: this->equipo.
 //  EFFECTS: If the machinetype and rutine type is the same, adds machine to equipo. Otherwise,
 //           notifies the user by printing to console and does nothing.
 void Rutina::addEquipment(const Maquina & machine){
-    
-    if (machine.getTipo() == getTipo()) {
+    /*
+    if (machine.getTipo() == this->getTipo()) {
         equipo.push_back(machine);
         return;
     }
-    
+    */
     cout << "No se puede agregar la maquina, pues el tipo de ejercicio realizado en la maquina" << endl;
     cout << "no coincide con el tipo de ejercicio de esta rutina" << endl;
-    
     
 }
 
@@ -32,7 +33,8 @@ void Rutina::addEquipment(const Maquina & machine){
 // Overloads stream output operator.
 ostream & operator<<(ostream & os, const Rutina & rutina)
 {
-    os << "Esta rutina es de tipo " << rutina.getTipo() << std::endl;
+    os << "La rutina numero: " << setw(2) << rutina.routineID << "es de tipo: " << rutina.getTipo() << endl;
+    os << "Las maquinas utilizadas en esta rutina son:  " << std::endl;
     
     rutina.printEquipment();
     
@@ -44,12 +46,13 @@ ostream & operator<<(ostream & os, const Rutina & rutina)
 // MODIFIES: None.
 //  EFFECTS: Prints to console the machines in this routine. If there are no machines, notifies the user.
 void Rutina::printEquipment() const{
+    
     if (equipo.empty()) {
         cout << "Esta rutina no tiene maquinas todavia" << endl;
         return; 
     }
     
-    std::cout << "Esta rutina usa las máquinas: " << std::endl;
+    //std::cout << "Esta rutina usa las máquinas: " << std::endl;
     
     for (auto e: equipo)
     {
@@ -91,27 +94,27 @@ void Rutina::setTipo(string tipoString){
 // REQUIRES: None.
 // MODIFIES: None.
 //  EFFECTS: Returns the string representation of enum MaquinaTipo.
-string Maquina::getTipo() const{
-    MaquinaTipo tipoMaq = this->machineType;
+string Rutina::getTipo() const {
+    Maquina::MaquinaTipo tipoMaq = this->rutineType;
     string output;
     
     switch (tipoMaq) {
-        case MaquinaTipo::PECHO:
+        case Maquina::MaquinaTipo::PECHO:
             output = "pecho";
             break;
-        case MaquinaTipo::ESPALDA:
+        case Maquina::MaquinaTipo::ESPALDA:
             output = "espalda";
             break;
-        case MaquinaTipo::BRAZO:
+        case Maquina::MaquinaTipo::BRAZO:
             output = "brazo";
             break;
-        case MaquinaTipo::PIERNA:
+        case Maquina::MaquinaTipo::PIERNA:
             output = "pierna";
             break;
-        case MaquinaTipo::ABDOMEN:
+        case Maquina::MaquinaTipo::ABDOMEN:
             output = "abdomen";
             break;
-        case MaquinaTipo::NONE:
+        case Maquina::MaquinaTipo::NONE:
             output = "no especificado";
             break;
             

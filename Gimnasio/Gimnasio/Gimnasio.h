@@ -17,6 +17,7 @@
 #include <map>
 #include <list>
 #include <string>
+#include <vector>
 
 #include "Maquina.h"
 #include "Usuario.h"
@@ -41,17 +42,34 @@ public:
     Gimnasio(){};
     Gimnasio(string name) : gymName(name){};
     
+    vector<Usuario> getUsuarios() const{
+        vector<Usuario> output;
+        for (auto u : usuarios){
+            output.push_back(u);
+        }
+        return output; 
+    }
+    
+    vector<Maquina> getMaquinas() const {
+        vector<Maquina> output;
+        
+        for (auto m : maquinas){
+            output.push_back(m.first);
+        }
+
+        return output;
+    }
+    
+    
     void addUser(const Usuario user);
     void addUser(const string userName, const string userLastName);
     void addMachine(const Maquina machine);
     
-    // TODO: VERIFY THAT THIS IS NECESSARY.
-    map<Maquina,int> getMachines();
-    
     void printUsers() const;
     void printMachines() const;
     
-    Usuario findUser(int);
+    int findUser(const int userID) const;
+    int findMachine(const int machineID) const; 
     
 };
 

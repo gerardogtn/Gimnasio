@@ -26,7 +26,7 @@ private:
     int machineID;
     static int machineCount;
     
-    MaquinaTipo machineType;
+    MaquinaTipo machineType = MaquinaTipo::NONE;
     
 public:
     Maquina(){
@@ -41,6 +41,11 @@ public:
     string getMachineName() const{
         return machineName;
     };
+    
+    int getMachineID() const{
+        return machineID;
+    }
+    
     
     void setTipo(const string tipoString);
     string getTipo() const;

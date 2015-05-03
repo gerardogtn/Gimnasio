@@ -17,14 +17,23 @@ class Rutina{
     friend ostream & operator<<(ostream & os, const Rutina & rutina);
     
 private:
+    int routineID;
+    static int routineCount;
     vector<Maquina> equipo;
     Maquina::MaquinaTipo rutineType;
     
 public:
-    Rutina() {};
-    Rutina(string t){
-        setTipo(t); 
+    Rutina() {
+        routineID = ++routineCount;
     };
+    Rutina(string t){
+        setTipo(t);
+        routineID = ++routineCount;
+    };
+    
+    int getRutinaID() const{
+        return routineID;
+    }
     
     void setTipo(string tipoString);
     string getTipo() const;

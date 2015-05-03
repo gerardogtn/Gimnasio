@@ -53,8 +53,9 @@ int main(int argc, const char * argv[]) {
         std::cout << "3. Mostrar la Cantidad de Usuarios y de Máquinas del Gimnasio." << std::endl;
         std::cout << "4. Mostrar las Máquinas Disponibles."                           << std::endl;
         std::cout << "5. Mostrar los Usuarios del Gimnasio."                          << std::endl;
-        std::cout << "6. Generar una rutina a un usuario."                            << std::endl;
-        std::cout << "7. Mostrar las rutinas de un usuario."                          << std::endl;
+        std::cout << "6. Crear una nueva rutina a un usuario."                        << std::endl;
+        std::cout << "7. Adicionar una maquina a una rutina existente. "              << std::endl;
+        std::cout << "8. Mostrar las rutinas de un usuario."                          << std::endl;
         //std::cout << "8. Hacer ejercicio. ";
         //std::cout << "";
         //std::cout << "";
@@ -127,41 +128,99 @@ int main(int argc, const char * argv[]) {
             case 6: {
                 /* CREAR UNA RUTINA */
                 
-                string type;
+                string rutineType;
                 cout << "¿Que tipo de rutina quieres agregar?" << endl;
                 cin.ignore();
                 
                 // PARA QUE UN GETLINE? NO BASTA CON UN CIN << TYPE???
-                getline(cin,type);
+                getline(cin,rutineType);
                 
-                /* NOT WORKING
-                int user;
+                Rutina routineToAdd(rutineType);
+                
+                
+                int userID;
                 std::cout << "Ingresa el número de usuario al que se le agregará una rutina" << std::endl;
-                std::cin >> user;
-                getInt(user);
+                std::cin >> userID;
+                userID = getInt(userID);
                 
-                sportsWorld.findUser(user).addRutina();*/
+                int userPosition = sportsWorld.findUser(userID);
                 
-               // A.addRutina(sportsWorld.getMachines());
-                
-                
+                if (userPosition == -1) {
+                    cout << "No existe el usuario en este gimnasio." << endl;
+                } else {
+                    sportsWorld.getUsuarios()[userPosition].addRutina(routineToAdd);
+                }
                 
                 
                 }
                 
                 break;
                 
-                
             case 7: {
-                /* NOT WORKING
-                int user;
+                /* ANADIR UNA MAQUINA A UNA RUTINA */
+                int userID;
+                std::cout << "Ingresa el número de usuario al que se le modificara su rutina: " << std::endl;
+                std::cin >> userID;
+                userID = getInt(userID);
+                
+                int userPosition = sportsWorld.findUser(userID);
+                if (userPosition == -1) {
+                    cout << "No existe el usuario en este gimnasio." << endl;
+                    break;
+                }
+                
+                Usuario workingUser = sportsWorld.getUsuarios()[userPosition];
+                
+                int routineID;
+                std::cout << "Ingresa el número de rutina a modificar: " << std::endl;
+                std::cin >> userID;
+                routineID = getInt(routineID);
+                
+                int routinePos = workingUser.findRutina(routineID);
+                if (routinePos == -1) {
+                    cout << "No existe esa rutina para este usuario." << endl;
+                    break;
+                }
+                
+                Rutina workingRutina = workingUser.getRutinas()[routinePos];
+                
+                int machineID;
+                std::cout << "Ingresa el número de maquina a insertar: " << std::endl;
+                std::cin >> userID;
+                machineID = getInt(machineID);
+                
+                int machinePos = workingUser.findRutina(machineID);
+                if (machinePos == -1) {
+                    cout << "No existe tal maquina en este gimnasio" << endl;
+                    break;
+                }
+                
+                Maquina workingMachine = sportsWorld.getMaquinas()[machinePos];
+                workingRutina.addEquipment(workingMachine);
+            
+                cout << "La maquina: " << workingMachine.getMachineName();
+                cout << "ha sido añadida correctamente a la rutina: " << workingRutina.getRutinaID();
+                cout << "del usuario: " << setw(15) << workingUser.getName(); 
+            
+                
+            }
+                
+            case 8: {
+                /* IMPRIMIR LAS RUTINAS DE UN USUARIO */
+                int userID;
                 std::cout << "Ingresa el número de usuario cuyas rutinas quieres ver" << std::endl;
-                std::cin >> user;
-                getInt(user);
+                std::cin >> userID;
+                userID = getInt(userID);
                 
-                sportsWorld.findUser(user).printRutinas(); */
+                int userPosition = sportsWorld.findUser(userID);
                 
-                A.printRutinas();
+                if (userPosition == -1) {
+                    cout << "No existe el usuario en este gimnasio." << endl;
+                } else {
+                    sportsWorld.getUsuarios()[userPosition].printRutinas();
+                }
+                
+                
                 }
                 
             case 0:

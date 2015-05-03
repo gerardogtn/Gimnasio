@@ -45,9 +45,17 @@ public:
         setTiredFactor(_tiredDec);
     };
     
+    string getName() const{
+        return this->nombre; 
+    }
+    
     int getUserID() const{
         return userID;
     };
+    
+    vector<Rutina> getRutinas() const {
+        return rutinas; 
+    }
     
     void setAvgRep(int averageRep){
         if (averageRep > 2 && averageRep < 40) {
@@ -62,9 +70,10 @@ public:
     };
     
     void hacerEjercicio(const Maquina & machine); 
-    
+
     void addRutina(const Rutina & routine);
     void printRutinas() const;
+    int  findRutina(const int routineID) const;
 };
 
 

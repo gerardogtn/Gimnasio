@@ -76,7 +76,9 @@ void Gimnasio::printMachines() const{
     
     
     for (auto m : maquinas) {
-        cout << "Existe(n) " << setw(3) << m.second << " maquina(s) de nombre: ";
+        cout << "Existe(n) " << setw(3) << m.second;
+        cout << " con numero de identificacion " << setw(3) << m.first.getMachineID();
+        cout << " maquina(s) de nombre: ";
         cout << m.first << endl; 
     }
     
@@ -117,43 +119,53 @@ void Gimnasio::addMachine(const Maquina machine){
     machineCount++;
 }
 
-// REQUIRES:
-// MODIFIES:
-//  EFFECTS:
-/*
-Usuario Gimnasio::findUser(int ID)
-{
+// REQUIRES: None.
+// MODIFIES: None.
+//  EFFECTS: Returns the position of a user in this->usuarios. If not found, returns -1.
+int Gimnasio::findUser(const int userID) const {
     int i = 0;
-    bool existe = false;
     
-    if (usuarios.size() <= 0)
-    {
+    if (usuarios.size() <= 0){
         cout << "No hay usuarios registrados" <<endl;
     }
     
-    while (!existe && i<usuarios.size())
-    {
-        for(auto u: usuarios)
-        {
-            if (u.getUserID() == ID)
-            {
-            existe = true;
-            return u;
-            }
-
-            i++;
+    for(auto u: usuarios){
+        
+        if (u.getUserID() == userID){
+            return i;
         }
+        
+        i++;
     }
-}
-*/
-map<Maquina,int> Gimnasio::getMachines()
-{
-    return maquinas;
+    
+    return -1;
 }
 
 
 
-
+// REQUIRES: None.
+// MODIFIES: None.
+//  EFFECTS: Returns the position of a user in this->maquinas. If not found, returns -1.
+int Gimnasio::findMachine(const int machineID) const{
+    int i = 0;
+    
+    vector<Maquina> machines = getMaquinas();
+    
+    if (maquinas.empty()){
+        cout << "No hay usuarios registrados" <<endl;
+    }
+    
+    for(auto m : machines){
+        
+        if (m.getMachineID() == machineID){
+            return i;
+        }
+        
+        i++;
+    }
+    
+    return -1;
+}
 
 
 

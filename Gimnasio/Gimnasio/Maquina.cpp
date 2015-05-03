@@ -18,7 +18,7 @@ ostream & operator<<(ostream & os, const Maquina & machine){
     os << machine.machineName << ". " << endl;
     os << "              sirve para ejercitar: " << machine.getTipo();
     
-    return os;//stub
+    return os;
 }
 
 
