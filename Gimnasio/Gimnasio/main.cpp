@@ -22,6 +22,7 @@ int main(int argc, const char * argv[]) {
     Maquina AA;
     Maquina BB("chest-press", "pecho");
     Maquina CC("chest-press", "pecho");
+    Maquina DD("leg-press","pierna");
     
     sportsWorld.addUser(A);
     sportsWorld.addUser(A);
@@ -33,6 +34,7 @@ int main(int argc, const char * argv[]) {
     sportsWorld.addMachine(BB);
     sportsWorld.addMachine(BB);
     sportsWorld.addMachine(CC);
+    sportsWorld.addMachine(DD);
     
     std::cout << sportsWorld;
     
@@ -43,7 +45,7 @@ int main(int argc, const char * argv[]) {
     
     // Menú de Opciones para el Usuario
     int option=1;
-    while (option!=6)
+    while (option!=8)
     {
         std::cout <<"Bienvenido a Sports World \n";
         std::cout <<"1. Registrar Nuevo Usuario \n";
@@ -51,7 +53,9 @@ int main(int argc, const char * argv[]) {
         std::cout <<"3. Mostrar la Cantidad de Usuarios y de Máquinas del Gimnasio \n";
         std::cout <<"4. Mostrar las Máquinas Disponibles \n";
         std::cout <<"5. Mostrar los Usuarios del Gimnasio\n";
-        std::cout <<"6. Salir \n";
+        std::cout <<"6. Generar una rutina a un usuario\n";
+        std::cout <<"7. Mostrar las rutinas de un usuario \n";
+        std::cout <<"8. Salir \n";
         std::cin >> option;
         option = getInt(option);
         switch (option)
@@ -78,8 +82,9 @@ int main(int argc, const char * argv[]) {
                 std::getline(std::cin,name);
                 std::string type;
                 std::cout << "Ingresa el tipo de máquina que es: pecho, espalda, brazo, pierna o abdomen"<<std::endl;
-                std::cin.ignore();
                 std::getline(std::cin,type);
+                
+                std::cout << type << std::endl;
                 
                 Maquina newMachine(name,type);
                 
@@ -101,6 +106,31 @@ int main(int argc, const char * argv[]) {
                 sportsWorld.printUsers();
             }
             break;
+            case 6:
+            {
+                /* NOT WORKING
+                int user;
+                std::cout << "Ingresa el número de usuario al que se le agregará una rutina" << std::endl;
+                std::cin >> user;
+                getInt(user);
+                
+                sportsWorld.findUser(user).addRutina();*/
+                
+                A.addRutina(sportsWorld.getMachines());
+            }
+            break;
+            case 7:
+            {
+                /* NOT WORKING
+                int user;
+                std::cout << "Ingresa el número de usuario cuyas rutinas quieres ver" << std::endl;
+                std::cin >> user;
+                getInt(user);
+                
+                sportsWorld.findUser(user).printRutinas(); */
+                
+                A.printRutinas();
+            }
             case 0:
             break;
         }
@@ -111,7 +141,7 @@ int main(int argc, const char * argv[]) {
 
 int getInt(int value)
 {
-    if ( std::cin && value > 0 && value <= 6)
+    if ( std::cin && value > 0 && value <= 8)
     {
         return value;
     }

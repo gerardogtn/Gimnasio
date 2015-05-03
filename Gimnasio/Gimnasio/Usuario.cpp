@@ -67,6 +67,49 @@ void Usuario::decrementRestedFactor(){
     
 }
 
+void Usuario::addRutina(map<Maquina,int> maquinas)
+{
+    string type;
+    cout << "¿Que tipo de rutina quieres agregar?" << endl;
+    cin.ignore();
+    getline(cin,type);
+    
+    Rutina rutina(type);
+    
+    if (type =="pierna"||type=="general"||type=="pecho"||type=="abdomen"||type=="brazo"||type=="espalda")
+    {
+        for (auto i: maquinas)
+        {
+            if((get<0>(i).getTipo() == type) || type == "general")
+            {
+                rutina.addEquipment(get<0>(i));
+            }
+        }
+        
+        if (rutina.getEquipo().empty())
+        {
+            cout << "Por el momento no contamos con máquinas para ese tipo de rutina" << endl;
+        }
+        else
+        {
+            rutinas.push_back(rutina);
+        }
+    }
+    else
+    {
+        cout << "No contamos son ese tipo de rutina" << endl;
+    }
+}
+
+void Usuario::printRutinas()
+{
+    cout << "Estas son las rutinas del usuario " << nombre << " " << apellido << ":" << endl;
+    for (auto i : rutinas)
+    {
+        cout << i << endl;
+    }
+}
+
 
 
 

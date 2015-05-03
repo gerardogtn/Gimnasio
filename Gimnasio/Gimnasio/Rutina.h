@@ -10,5 +10,22 @@
 #define __Gimnasio__Rutina__
 
 #include <stdio.h>
+#include <vector>
+#include "Maquina.h"
+
+class Rutina{
+    
+    public:
+    Rutina(string t) : tipo(t) { }
+    Rutina() {}
+    void addEquipment(Maquina);
+    friend ostream & operator<<(ostream & os, const Rutina & rutina);
+    void printEquipment() const;
+    vector<Maquina> getEquipo();
+    
+    private:
+    std::string tipo;
+    vector<Maquina> equipo;
+};
 
 #endif /* defined(__Gimnasio__Rutina__) */

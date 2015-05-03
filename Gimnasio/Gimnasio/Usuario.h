@@ -11,7 +11,10 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <vector>
+#include <map>
 #include "Maquina.h"
+#include "Rutina.h"
 
 using namespace std;
 
@@ -26,7 +29,7 @@ private:
     int averageRepetition = 12;
     int restedFactor = 12;
     int tiredDecrement = 1; 
-    // list<Rutina> rutinas;
+    vector<Rutina> rutinas;
     
     void decrementRestedFactor(); 
     
@@ -58,6 +61,9 @@ public:
     }
     
     void hacerEjercicio(const Maquina & machine); 
+    
+    void addRutina(map<Maquina,int>);
+    void printRutinas();
 };
 
 

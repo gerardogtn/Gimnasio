@@ -28,9 +28,6 @@ private:
     
     MaquinaTipo machineType;
     
-    MaquinaTipo getTipo(string tipoString);
-    string getTipo() const;
-    
 public:
     Maquina(){
         machineID = ++machineCount;
@@ -44,6 +41,9 @@ public:
     string getMachineName() const{
         return machineName;
     };
+    
+    MaquinaTipo getTipo(string tipoString);
+    string getTipo() const;
     
     bool operator<(const Maquina machine) const;
     bool operator==(const Maquina machine) const; 

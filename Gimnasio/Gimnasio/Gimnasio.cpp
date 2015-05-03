@@ -117,6 +117,36 @@ void Gimnasio::addMachine(const Maquina machine){
     machineCount++;
 }
 
+Usuario Gimnasio::findUser(int ID)
+{
+    int i = 0;
+    bool existe = false;
+    
+    if (usuarios.size() <= 0)
+    {
+        cout << "No hay usuarios registrados" <<endl;
+    }
+    
+    while (!existe && i<usuarios.size())
+    {
+        for(auto u: usuarios)
+        {
+            if (u.getUserID() == ID)
+            {
+            existe = true;
+            return u;
+            }
+
+            i++;
+        }
+    }
+}
+
+map<Maquina,int> Gimnasio::getMachines()
+{
+    return maquinas;
+}
+
 
 
 

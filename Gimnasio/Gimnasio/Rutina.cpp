@@ -7,3 +7,34 @@
 //
 
 #include "Rutina.h"
+
+void Rutina::addEquipment(Maquina machine)
+{
+    equipo.push_back(machine);
+}
+
+ostream & operator<<(ostream & os, const Rutina & rutina)
+{
+    os << "Esta rutina es de tipo " << rutina.tipo << std::endl;
+    
+    rutina.printEquipment();
+    
+    return os;
+}
+
+void Rutina::printEquipment() const
+{
+    std::cout << "Esta rutina usa las máquinas: " << std::endl;
+    
+    for (auto i: equipo)
+    {
+        std::cout << i << std::endl;
+    }
+    
+    std::cout << std::endl;
+}
+
+vector<Maquina> Rutina::getEquipo()
+{
+    return equipo;
+}

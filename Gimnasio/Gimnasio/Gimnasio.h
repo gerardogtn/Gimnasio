@@ -45,9 +45,12 @@ public:
     void addUser(const string userName, const string userLastName);
     void addMachine(const Maquina machine);
     
+    map<Maquina,int> getMachines();
     
     void printUsers() const;
     void printMachines() const;
+    
+    Usuario findUser(int);
     
 };
 
