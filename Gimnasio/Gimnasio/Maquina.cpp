@@ -23,11 +23,10 @@ ostream & operator<<(ostream & os, const Maquina & machine){
 
 
 
-// REQUIRES: tipoString represents a MaquinaTipo.
+// REQUIRES: None.
 // MODIFIES: None.
 //  EFFECTS: Returns the enum representation of the given string.
-// TODO: Throw new illegal argument exception if tipoString is not valid.
-Maquina::MaquinaTipo Maquina::getTipo(string tipoString){
+void Maquina::setTipo(string tipoString){
     MaquinaTipo output;
     
     if (tipoString == "pecho") {
@@ -41,10 +40,11 @@ Maquina::MaquinaTipo Maquina::getTipo(string tipoString){
     } else if (tipoString == "abdomen"){
         output = MaquinaTipo::ABDOMEN;
     } else{
+        cout << "El tipo de maquina no ha sido reconocido, la maquina se ha asignado con un tipo: 'no especificado'" << endl;
         output = MaquinaTipo::NONE;
     }
     
-    return output;
+    this->machineType = output;
 }
 
 // REQUIRES: None.

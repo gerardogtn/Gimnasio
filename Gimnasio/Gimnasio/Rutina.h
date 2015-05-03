@@ -14,18 +14,28 @@
 #include "Maquina.h"
 
 class Rutina{
-    
-    public:
-    Rutina(string t) : tipo(t) { }
-    Rutina() {}
-    void addEquipment(Maquina);
     friend ostream & operator<<(ostream & os, const Rutina & rutina);
-    void printEquipment() const;
-    vector<Maquina> getEquipo();
     
-    private:
-    std::string tipo;
+private:
     vector<Maquina> equipo;
+    Maquina::MaquinaTipo rutineType;
+    
+public:
+    Rutina() {};
+    Rutina(string t){
+        setTipo(t); 
+    };
+    
+    void setTipo(string tipoString);
+    string getTipo() const;
+    
+    void addEquipment(const Maquina & machine);
+    void addEquipment(const int equipmentID);
+    void printEquipment() const;
+    vector<Maquina> getEquipment() const;
+    
+
+    
 };
 
 #endif /* defined(__Gimnasio__Rutina__) */

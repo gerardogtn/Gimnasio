@@ -45,6 +45,7 @@ public:
     void addUser(const string userName, const string userLastName);
     void addMachine(const Maquina machine);
     
+    // TODO: VERIFY THAT THIS IS NECESSARY.
     map<Maquina,int> getMachines();
     
     void printUsers() const;

@@ -109,14 +109,18 @@ void Gimnasio::addUser(const string userName, const string userLastName){
     addUser(Usuario(userName, userLastName)); 
 }
 
-// REQUIRES:
-// MODIFIES:
-//  EFFECTS:
+// REQUIRES: None.
+// MODIFIES: this->maquinas.
+//  EFFECTS: Adds a new machine to maquinas map. If machine already exists, increase its machine count.
 void Gimnasio::addMachine(const Maquina machine){
     maquinas[machine]++;
     machineCount++;
 }
 
+// REQUIRES:
+// MODIFIES:
+//  EFFECTS:
+/*
 Usuario Gimnasio::findUser(int ID)
 {
     int i = 0;
@@ -141,7 +145,7 @@ Usuario Gimnasio::findUser(int ID)
         }
     }
 }
-
+*/
 map<Maquina,int> Gimnasio::getMachines()
 {
     return maquinas;

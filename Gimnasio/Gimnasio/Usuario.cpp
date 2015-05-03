@@ -34,7 +34,8 @@ void Usuario::hacerEjercicio(const Maquina & machine){
     }
     
     cout << "-----------------------------------------------------------------" << endl;
-    cout << setw(10) << this->nombre <<"esta usando la maquina de: "<< setw(3) << machine.getMachineName() << endl;
+    cout << setw(10) << this->nombre <<"esta usando la maquina de: ";
+    cout << setw(3) << machine.getMachineName() << endl;
     cout << "-----------------------------------------------------------------" << endl;
     
     int repetitions = averageRepetition;
@@ -67,46 +68,34 @@ void Usuario::decrementRestedFactor(){
     
 }
 
-void Usuario::addRutina(map<Maquina,int> maquinas)
-{
-    string type;
-    cout << "¿Que tipo de rutina quieres agregar?" << endl;
-    cin.ignore();
-    getline(cin,type);
-    
-    Rutina rutina(type);
-    
-    if (type =="pierna"||type=="general"||type=="pecho"||type=="abdomen"||type=="brazo"||type=="espalda")
-    {
-        for (auto i: maquinas)
-        {
-            if((get<0>(i).getTipo() == type) || type == "general")
-            {
-                rutina.addEquipment(get<0>(i));
-            }
-        }
-        
-        if (rutina.getEquipo().empty())
-        {
-            cout << "Por el momento no contamos con máquinas para ese tipo de rutina" << endl;
-        }
-        else
-        {
-            rutinas.push_back(rutina);
-        }
-    }
-    else
-    {
-        cout << "No contamos son ese tipo de rutina" << endl;
-    }
+// REQUIRES: None.
+// MODIFIES: this->rutinas.
+//  EFFECTS: Adds a Rutina to rutinas.
+void Usuario::addRutina(const Rutina & routine) {
+    rutinas.push_back(routine);
 }
 
-void Usuario::printRutinas()
-{
+
+
+// REQUIRES: None.
+// MODIFIES: None.
+//  EFFECTS: Prints to console all the routines for a user.
+void Usuario::printRutinas() const{
+    
+    if (rutinas.empty()) {
+        cout << "No existe ninguna rutina para el usuario: "<< setw(20) << nombre;
+        cout << setw(20) << apellido << ":(" << endl;
+        return;
+    }
+    
+    int j = 1;
+    
     cout << "Estas son las rutinas del usuario " << nombre << " " << apellido << ":" << endl;
-    for (auto i : rutinas)
-    {
+    
+    for (auto i : rutinas){
+        cout << "Rutina " << setw(2) << j << ": " << endl;
         cout << i << endl;
+        j++;
     }
 }
 

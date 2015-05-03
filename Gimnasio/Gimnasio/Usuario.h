@@ -12,7 +12,6 @@
 #include <iomanip>
 #include <string>
 #include <vector>
-#include <map>
 #include "Maquina.h"
 #include "Rutina.h"
 
@@ -38,7 +37,9 @@ public:
     Usuario(string name, string _apellido) : nombre(name), apellido(_apellido) {
         userID = ++userCount;
     };
-    Usuario(string name, string _apellido, int averageRep, int _tiredDec) : nombre(name), apellido(_apellido){
+    Usuario(string name, string _apellido, int averageRep, int _tiredDec)
+            : nombre(name), apellido(_apellido){
+                
         userID = ++userCount;
         setAvgRep(averageRep);
         setTiredFactor(_tiredDec);
@@ -46,24 +47,24 @@ public:
     
     int getUserID() const{
         return userID;
-    }
+    };
     
     void setAvgRep(int averageRep){
         if (averageRep > 2 && averageRep < 40) {
             averageRepetition = averageRep;
         }
-    }
+    };
     
     void setTiredFactor(int tiredness){
         if (tiredness >= 1 && tiredness < averageRepetition){
             tiredDecrement = tiredness;
         }
-    }
+    };
     
     void hacerEjercicio(const Maquina & machine); 
     
-    void addRutina(map<Maquina,int>);
-    void printRutinas();
+    void addRutina(const Rutina & routine);
+    void printRutinas() const;
 };
 
 

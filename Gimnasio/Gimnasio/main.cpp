@@ -47,21 +47,25 @@ int main(int argc, const char * argv[]) {
     int option=1;
     while (option!=8)
     {
-        std::cout <<"Bienvenido a Sports World \n";
-        std::cout <<"1. Registrar Nuevo Usuario \n";
-        std::cout <<"2. Registrar una Nueva Máquina \n";
-        std::cout <<"3. Mostrar la Cantidad de Usuarios y de Máquinas del Gimnasio \n";
-        std::cout <<"4. Mostrar las Máquinas Disponibles \n";
-        std::cout <<"5. Mostrar los Usuarios del Gimnasio\n";
-        std::cout <<"6. Generar una rutina a un usuario\n";
-        std::cout <<"7. Mostrar las rutinas de un usuario \n";
-        std::cout <<"8. Salir \n";
+        std::cout << "Bienvenido a Sports World."                                     << std::endl;
+        std::cout << "1. Registrar Nuevo Usuario."                                    << std::endl;
+        std::cout << "2. Registrar una Nueva Máquina."                                << std::endl;
+        std::cout << "3. Mostrar la Cantidad de Usuarios y de Máquinas del Gimnasio." << std::endl;
+        std::cout << "4. Mostrar las Máquinas Disponibles."                           << std::endl;
+        std::cout << "5. Mostrar los Usuarios del Gimnasio."                          << std::endl;
+        std::cout << "6. Generar una rutina a un usuario."                            << std::endl;
+        std::cout << "7. Mostrar las rutinas de un usuario."                          << std::endl;
+        //std::cout << "8. Hacer ejercicio. ";
+        //std::cout << "";
+        //std::cout << "";
+        std::cout <<"8. Salir \n"                                                     << std::endl;
         std::cin >> option;
         option = getInt(option);
         switch (option)
         {
-            case 1:
-            {
+            case 1:{
+                
+                /* REGISTRAR USUARIO */
                 std::string name;
                 std::cout << "Ingresa el nombre del usuario a agregar"<<std::endl;
                 std::cin.ignore();
@@ -72,10 +76,13 @@ int main(int argc, const char * argv[]) {
                 std::getline(std::cin,last);
                 
                 sportsWorld.addUser(name,last);
-            }
-            break;
-            case 2:
-            {
+                }
+                
+                break;
+                
+                
+            case 2:{
+                /* REGISTRAR MAQUINA */
                 std::string name;
                 std::cout << "Ingresa el nombre de la máquina a agregar"<<std::endl;
                 std::cin.ignore();
@@ -89,25 +96,44 @@ int main(int argc, const char * argv[]) {
                 Maquina newMachine(name,type);
                 
                 sportsWorld.addMachine(newMachine);
-            }
-            break;
-            case 3:
-            {
+                }
+                
+                break;
+                
+                
+            case 3: {
+                /* IMPRIMIR CANTIDAD DE USUARIOS Y MAQUINAS */
                 std::cout << sportsWorld;
-            }
-            break;
-            case 4:
-            {
+                }
+                
+                break;
+                
+                
+            case 4: {
+                /* IMPRIMIR LAS MAQUINAS DEL GIMNASIO */
                 sportsWorld.printMachines();
-            }
-            break;
-            case 5:
-            {
+                }
+                break;
+                
+                
+            case 5: {
+                /* IMPRIMIR LOS USUARIOS DEL GIMNASIO */ 
                 sportsWorld.printUsers();
-            }
-            break;
-            case 6:
-            {
+                }
+                
+                break;
+                
+                
+            case 6: {
+                /* CREAR UNA RUTINA */
+                
+                string type;
+                cout << "¿Que tipo de rutina quieres agregar?" << endl;
+                cin.ignore();
+                
+                // PARA QUE UN GETLINE? NO BASTA CON UN CIN << TYPE???
+                getline(cin,type);
+                
                 /* NOT WORKING
                 int user;
                 std::cout << "Ingresa el número de usuario al que se le agregará una rutina" << std::endl;
@@ -116,11 +142,17 @@ int main(int argc, const char * argv[]) {
                 
                 sportsWorld.findUser(user).addRutina();*/
                 
-                A.addRutina(sportsWorld.getMachines());
-            }
-            break;
-            case 7:
-            {
+               // A.addRutina(sportsWorld.getMachines());
+                
+                
+                
+                
+                }
+                
+                break;
+                
+                
+            case 7: {
                 /* NOT WORKING
                 int user;
                 std::cout << "Ingresa el número de usuario cuyas rutinas quieres ver" << std::endl;
@@ -130,9 +162,10 @@ int main(int argc, const char * argv[]) {
                 sportsWorld.findUser(user).printRutinas(); */
                 
                 A.printRutinas();
-            }
+                }
+                
             case 0:
-            break;
+                break;
         }
     }
     
@@ -154,3 +187,45 @@ int getInt(int value)
         return getInt(value);
     }
 }
+
+
+
+/* CODE FOR INTERACTIVE MENU.
+ 
+ 
+ string type;
+ cout << "¿Que tipo de rutina quieres agregar?" << endl;
+ cin.ignore();
+ getline(cin,type);
+ 
+ Rutina rutina(type);
+ 
+ if (type =="pierna"||type=="general"||type=="pecho"||type=="abdomen"||type=="brazo"||type=="espalda")
+ {
+ for (auto i: maquinas)
+ {
+ if((get<0>(i).getTipo() == type) || type == "general")
+ {
+ rutina.addEquipment(get<0>(i));
+ }
+ }
+ 
+ if (rutina.getEquipo().empty())
+ {
+ cout << "Por el momento no contamos con máquinas para ese tipo de rutina" << endl;
+ }
+ else
+ {
+ rutinas.push_back(rutina);
+ }
+ }
+ else
+ {
+ cout << "No contamos son ese tipo de rutina" << endl;
+ }
+ 
+ 
+ 
+ */
+
+

@@ -34,7 +34,7 @@ public:
     };
     
     Maquina(string nombreMaq, string tipoMaq) : machineName(nombreMaq){
-        machineType = getTipo(tipoMaq);
+        setTipo(tipoMaq);
         machineID   = ++machineCount;
     };
     
@@ -42,7 +42,7 @@ public:
         return machineName;
     };
     
-    MaquinaTipo getTipo(string tipoString);
+    void setTipo(const string tipoString);
     string getTipo() const;
     
     bool operator<(const Maquina machine) const;
