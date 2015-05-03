@@ -149,15 +149,13 @@ int Gimnasio::findUser(const int userID) const {
 int Gimnasio::findMachine(const int machineID) const{
     int i = 0;
     
-    vector<Maquina> machines = getMaquinas();
-    
     if (maquinas.empty()){
-        cout << "No hay usuarios registrados" <<endl;
+        cout << "No hay maquinas registradas" <<endl;
     }
     
-    for(auto m : machines){
+    for(auto m : maquinas){
         
-        if (m.getMachineID() == machineID){
+        if (get<0>(m).getMachineID() == machineID){
             return i;
         }
         

@@ -29,7 +29,7 @@ class Gimnasio{
     
     
 private:
-    list<Usuario> usuarios;
+    //list<Usuario> usuarios;
     
     // Un mapa que almacena las maquinas y el numero de maquinas.
     map<Maquina, int> maquinas;
@@ -41,6 +41,7 @@ private:
 public:
     Gimnasio(){};
     Gimnasio(string name) : gymName(name){};
+    vector<Usuario> usuarios;
     
     vector<Usuario> getUsuarios() const{
         vector<Usuario> output;

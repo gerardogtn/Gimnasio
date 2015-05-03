@@ -41,11 +41,11 @@ int main(int argc, const char * argv[]) {
     sportsWorld.printMachines();
     sportsWorld.printUsers();
     
-    B.hacerEjercicio(BB); 
+    //B.hacerEjercicio(BB); 
     
     // Menú de Opciones para el Usuario
     int option=1;
-    while (option!=8)
+    while (option!=9)
     {
         std::cout << "Bienvenido a Sports World."                                     << std::endl;
         std::cout << "1. Registrar Nuevo Usuario."                                    << std::endl;
@@ -59,7 +59,7 @@ int main(int argc, const char * argv[]) {
         //std::cout << "8. Hacer ejercicio. ";
         //std::cout << "";
         //std::cout << "";
-        std::cout <<"8. Salir \n"                                                     << std::endl;
+        std::cout <<"9. Salir \n"                                                     << std::endl;
         std::cin >> option;
         option = getInt(option);
         switch (option)
@@ -73,7 +73,6 @@ int main(int argc, const char * argv[]) {
                 std::getline(std::cin,name);
                 std::string last;
                 std::cout << "Ingresa el apellido del usuario"<<std::endl;
-                std::cin.ignore();
                 std::getline(std::cin,last);
                 
                 sportsWorld.addUser(name,last);
@@ -91,8 +90,6 @@ int main(int argc, const char * argv[]) {
                 std::string type;
                 std::cout << "Ingresa el tipo de máquina que es: pecho, espalda, brazo, pierna o abdomen"<<std::endl;
                 std::getline(std::cin,type);
-                
-                std::cout << type << std::endl;
                 
                 Maquina newMachine(name,type);
                 
@@ -132,7 +129,6 @@ int main(int argc, const char * argv[]) {
                 cout << "¿Que tipo de rutina quieres agregar?" << endl;
                 cin.ignore();
                 
-                // PARA QUE UN GETLINE? NO BASTA CON UN CIN << TYPE???
                 getline(cin,rutineType);
                 
                 Rutina routineToAdd(rutineType);
@@ -148,7 +144,7 @@ int main(int argc, const char * argv[]) {
                 if (userPosition == -1) {
                     cout << "No existe el usuario en este gimnasio." << endl;
                 } else {
-                    sportsWorld.getUsuarios()[userPosition].addRutina(routineToAdd);
+                    sportsWorld.usuarios[userPosition].addRutina(routineToAdd);
                 }
                 
                 
@@ -173,7 +169,7 @@ int main(int argc, const char * argv[]) {
                 
                 int routineID;
                 std::cout << "Ingresa el número de rutina a modificar: " << std::endl;
-                std::cin >> userID;
+                std::cin >> routineID;
                 routineID = getInt(routineID);
                 
                 int routinePos = workingUser.findRutina(routineID);
@@ -186,10 +182,11 @@ int main(int argc, const char * argv[]) {
                 
                 int machineID;
                 std::cout << "Ingresa el número de maquina a insertar: " << std::endl;
-                std::cin >> userID;
+                std::cin >> machineID;
                 machineID = getInt(machineID);
                 
-                int machinePos = workingUser.findRutina(machineID);
+                int machinePos = sportsWorld.findMachine(machineID);
+                
                 if (machinePos == -1) {
                     cout << "No existe tal maquina en este gimnasio" << endl;
                     break;
@@ -199,11 +196,10 @@ int main(int argc, const char * argv[]) {
                 workingRutina.addEquipment(workingMachine);
             
                 cout << "La maquina: " << workingMachine.getMachineName();
-                cout << "ha sido añadida correctamente a la rutina: " << workingRutina.getRutinaID();
-                cout << "del usuario: " << setw(15) << workingUser.getName(); 
-            
-                
+                cout << " ha sido añadida correctamente a la rutina: " << workingRutina.getRutinaID();
+                cout << " del usuario: " << setw(15) << workingUser.getName() << endl << endl;
             }
+            break;
                 
             case 8: {
                 /* IMPRIMIR LAS RUTINAS DE UN USUARIO */
@@ -220,9 +216,8 @@ int main(int argc, const char * argv[]) {
                     sportsWorld.getUsuarios()[userPosition].printRutinas();
                 }
                 
-                
                 }
-                
+            break;
             case 0:
                 break;
         }
@@ -233,7 +228,7 @@ int main(int argc, const char * argv[]) {
 
 int getInt(int value)
 {
-    if ( std::cin && value > 0 && value <= 8)
+    if ( std::cin && value > 0)
     {
         return value;
     }

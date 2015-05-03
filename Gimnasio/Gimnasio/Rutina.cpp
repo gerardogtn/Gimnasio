@@ -73,18 +73,18 @@ vector<Maquina> Rutina::getEquipment() const {
 void Rutina::setTipo(string tipoString){
     Maquina::MaquinaTipo output;
     
-    if (tipoString == "pecho") {
+    if (tipoString == "pecho" || tipoString == "Pecho") {
         output = Maquina::MaquinaTipo::PECHO;
-    } else if (tipoString == "espalda"){
+    } else if (tipoString == "espalda" || tipoString == "Espalda"){
         output = Maquina::MaquinaTipo::ESPALDA;
-    } else if (tipoString == "brazo"){
+    } else if (tipoString == "brazo" || tipoString == "Brazo"){
         output = Maquina::MaquinaTipo::BRAZO;
-    } else if (tipoString == "pierna"){
+    } else if (tipoString == "pierna" || tipoString == "Pierna"){
         output = Maquina::MaquinaTipo::PIERNA;
-    } else if (tipoString == "abdomen"){
+    } else if (tipoString == "abdomen" || tipoString == "Abdomen"){
         output = Maquina::MaquinaTipo::ABDOMEN;
     } else{
-        cout << "El tipo de maquina no ha sido reconocido, la maquina se ha asignado con un tipo: 'no especificado'" << endl;
+        cout << "El tipo de rutina no ha sido reconocido, la rutina se ha asignado con un tipo: 'no especificado'" << endl;
         output = Maquina::MaquinaTipo::NONE;
     }
     rutineType = output;
