@@ -15,34 +15,78 @@ int getInt(int);
 int main(int argc, const char * argv[]) {
     Gimnasio sportsWorld("Sports world");
     
-    Usuario A;
+    sportsWorld.addUser("Alejandro ", "Herce");
+    sportsWorld.addUser("Alfredo ", "Campos");
+    sportsWorld.addUser("Emilio ", "Ferreira");
+    sportsWorld.addUser("Gerardo", "Teruel");
+    sportsWorld.addUser("Gonzalo ", "Vergara");
+    sportsWorld.addUser("Jonathan", "Ginsburg");
+    sportsWorld.addUser("Juan ", "Leon");
+    sportsWorld.addUser("Mauricio ", "Garcia");
+    sportsWorld.addUser("Miguel ", "de la Colina");
+    sportsWorld.addUser("Santiago ", "Rodriguez");
     
-    Usuario B("Juan", "Perez");
-    Usuario C("Alex", "Terrazas", 10, 4);
+    sportsWorld.addUser("Margot ", "Duek");
+    sportsWorld.addUser("Esther ", "Nereida");
+    sportsWorld.addUser("Andrea ", "Eva");
+    sportsWorld.addUser("Camila", "Catalina");
+    sportsWorld.addUser("Aurora ", "Torres");
+    sportsWorld.addUser("Yessica", "Romero");
+    sportsWorld.addUser("Pilar ", "Suarez");
+    sportsWorld.addUser("Tomasa ", "Busto");
+    sportsWorld.addUser("Jovita ", "Escarcega");
+    sportsWorld.addUser("Anastasia ", "Castro");
     
-    Maquina AA;
-    Maquina BB("chest-press", "pecho");
-    Maquina CC("chest-press", "pecho");
-    Maquina DD("leg-press","pierna");
+    Maquina A("banco-press", "abdomen");
+    Maquina B("femorales", "pierna");
+    Maquina C("leg-press","pierna");
+    Maquina D("abductores", "pierna");
+    Maquina E("dorsalera", "espalda");
+    Maquina F("paralelas","abdomen");
+    Maquina G("peck-deck", "pecho");
+    Maquina H("banco-press", "pecho");
+    Maquina I("remo","espalda");
+    Maquina J("maquina de tricep", "brazo");
+    Maquina K("maquina de bicep", "brazo");
     
-    sportsWorld.addUser(A);
-    sportsWorld.addUser(A);
-    sportsWorld.addUser(B);
-    sportsWorld.addUser("Andrea", "Rodriguez");
-    sportsWorld.addUser("Ana", "Karenina");
+    Usuario tiredQuick("Francisco", "Perez", 16, 4);
+    Rutina  test("pecho");
+    test.addEquipment(H);
+    test.addEquipment(H);
+    test.addEquipment(G);
+    test.addEquipment(H);
+    tiredQuick.addRutina(test); 
     
-    sportsWorld.addMachine(AA);
-    sportsWorld.addMachine(BB);
-    sportsWorld.addMachine(BB);
-    sportsWorld.addMachine(CC);
-    sportsWorld.addMachine(DD);
+    sportsWorld.addUser(tiredQuick);
+    
+    sportsWorld.addMachine(A);
+    sportsWorld.addMachine(A);
+    sportsWorld.addMachine(A);
+    sportsWorld.addMachine(A);
+    sportsWorld.addMachine(B);
+    sportsWorld.addMachine(B);
+    sportsWorld.addMachine(B);
+    sportsWorld.addMachine(C);
+    sportsWorld.addMachine(D);
+    sportsWorld.addMachine(D);
+    sportsWorld.addMachine(E);
+    sportsWorld.addMachine(E);
+    sportsWorld.addMachine(E);
+    sportsWorld.addMachine(F);
+    sportsWorld.addMachine(G);
+    sportsWorld.addMachine(G);
+    sportsWorld.addMachine(H);
+    sportsWorld.addMachine(I);
+    sportsWorld.addMachine(I);
+    sportsWorld.addMachine(I);
+    sportsWorld.addMachine(I);
+    sportsWorld.addMachine(J);
+    sportsWorld.addMachine(K);
     
     std::cout << sportsWorld;
     
     sportsWorld.printMachines();
     sportsWorld.printUsers();
-    
-    //B.hacerEjercicio(BB);
     
     // Menú de Opciones para el Usuario
     int option=1;
@@ -88,6 +132,9 @@ int main(int argc, const char * argv[]) {
                 
                 /* Eliminar USUARIO */
                 int userID;
+                if (sportsWorld.getUsuarios()->empty()){
+                    std::cout << "No existen usuarios en este gimnasio: " << std::endl;
+                }
                 std::cout << "Ingresa el número de usuario que quieres eliminar: " << std::endl;
                 std::cin >> userID;
                 userID = getInt(userID);
@@ -125,6 +172,11 @@ int main(int argc, const char * argv[]) {
                 
                 /* Eliminar Máquina */
                 int machineID;
+                if (sportsWorld.getMaquinas().empty()) {
+                    std::cout << "No existen maquinas en este gimnasio: " << std::endl;
+                    break;
+                }
+                
                 std::cout << "Ingresa el número de máquina que quieres eliminar: " << std::endl;
                 std::cin >> machineID;
                 machineID = getInt(machineID);
@@ -166,7 +218,8 @@ int main(int argc, const char * argv[]) {
             case 8: {
                 /* CREAR UNA RUTINA */
                 string rutineType;
-                cout << "¿Que tipo de rutina quieres agregar?" << endl;
+                cout << "Ingresa el tipo de RUTINA que quires agregar";
+                cout << ": pecho, espalda, brazo, pierna o abdomen" << endl;
                 cin.ignore();
                 getline(cin,rutineType);
                 Rutina routineToAdd(rutineType);
@@ -182,6 +235,9 @@ int main(int argc, const char * argv[]) {
                 if (userPosition == -1) {
                     cout << "No existe el usuario en este gimnasio." << endl;
                 } else {
+                    cout << "Se ha añadido correctamente una rutina con numero de identificacion";
+                    cout << setw(3) << routineToAdd.getRutinaID();
+                    cout << "Al usuario con identificacion: " << setw(3) << userID;
                     sportsWorld.getUsuarios()->at(userPosition).addRutina(routineToAdd);
                 }
                 
@@ -192,6 +248,9 @@ int main(int argc, const char * argv[]) {
             
             case 9: {
                 /* ELIMINAR UNA RUTINA */
+                if (sportsWorld.getUsuarios()->empty()) {
+                    std::cout << "No existen usuarios en este gimnasio" << std::endl;
+                }
                 int userID;
                 std::cout << "Ingresa el número de usuario al que se le quitará una rutina" << std::endl;
                 std::cin >> userID;
@@ -204,14 +263,21 @@ int main(int argc, const char * argv[]) {
                 
                 if (userPosition == -1) {
                     cout << "No existe el usuario en este gimnasio." << endl;
+                    break;
                 } else {
+                    Usuario * workingUser = sportsWorld.getUserAt(userPosition);
+                    
+                    if(workingUser->getRutinas()->empty()){
+                        cout << "Este usuario no tiene ninguna rutina" << endl;
+                        break;
+                    }
                     
                     int routineID;
                     std::cout << "Ingresa el número de rutina a modificar: " << std::endl;
                     std::cin >> routineID;
                     routineID = getInt(routineID);
                     
-                    Usuario * workingUser = sportsWorld.getUserAt(userPosition);
+                    
                     
                     int routinePos = workingUser->findRutina(routineID);
                     if (routinePos == -1) {
@@ -229,10 +295,18 @@ int main(int argc, const char * argv[]) {
                 
             case 10: {
                 /* ANADIR UNA MAQUINA A UNA RUTINA */
+                
+                if (sportsWorld.getUsuarios()->empty()) {
+                    std::cout << "No existen usuarios en este gimnasio" << std::endl;
+                }
+                
+                
+                
                 int userID;
                 std::cout << "Ingresa el número de usuario al que se le modificara su rutina: " << std::endl;
                 std::cin >> userID;
                 userID = getInt(userID);
+                
                 
                 int userPosition = sportsWorld.findUser(userID);
                 if (userPosition == -1) {
@@ -241,6 +315,12 @@ int main(int argc, const char * argv[]) {
                 }
                 
                 Usuario * workingUser = sportsWorld.getUserAt(userPosition);
+                
+                if(workingUser->getRutinas()->empty()){
+                    cout << "Este usuario no tiene ninguna rutina" << endl;
+                    break;
+                }
+                
                 
                 int routineID;
                 std::cout << "Ingresa el número de rutina a modificar: " << std::endl;
@@ -254,6 +334,12 @@ int main(int argc, const char * argv[]) {
                 }
                 
                 Rutina * workingRutina = workingUser->getRutinaAt(routinePos);
+                
+                if (sportsWorld.getMaquinas().empty()) {
+                    cout << "No existen maquinas en este gimnasio." << endl;
+                    break;
+                }
+                
                 
                 int machineID;
                 std::cout << "Ingresa el número de maquina a insertar: " << std::endl;
@@ -279,8 +365,11 @@ int main(int argc, const char * argv[]) {
             break;
             
             case 11: {
-                
                 /* ELIMINAR UNA MAQUINA DE UNA RUTINA */
+                if (sportsWorld.getUsuarios()->empty()) {
+                    std::cout << "No existen usuarios en este gimnasio" << std::endl;
+                }
+                
                 int userID;
                 std::cout << "Ingresa el número de usuario al que se le modificara su rutina: " << std::endl;
                 std::cin >> userID;
@@ -294,6 +383,12 @@ int main(int argc, const char * argv[]) {
                 
                 Usuario * workingUser = sportsWorld.getUserAt(userPosition);
                 
+                
+                if(workingUser->getRutinas()->empty()){
+                    cout << "Este usuario no tiene ninguna rutina" << endl;
+                    break;
+                }
+                
                 int routineID;
                 std::cout << "Ingresa el número de rutina a modificar: " << std::endl;
                 std::cin >> routineID;
@@ -306,6 +401,11 @@ int main(int argc, const char * argv[]) {
                 }
                 
                 Rutina * workingRutina = workingUser->getRutinaAt(routinePos);
+                
+                if (sportsWorld.getMaquinas().empty()) {
+                    cout << "No existen maquinas en este gimnasio." << endl;
+                    break;
+                }
                 
                 int machineID;
                 std::cout << "Ingresa el número de maquina a eliminar de la rutina: " << std::endl;

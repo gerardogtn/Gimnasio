@@ -145,6 +145,7 @@ Rutina * Usuario::getRutinaAt(const int position){
 void Usuario::ejercitarRutina(const Rutina & routine){
     if  (restedFactor <= 2){
         cout << setw(10) << this->nombre << "esta demasiado cansado para hacer ejercicio" << endl;
+        cout << endl;
         return;
     }
     
@@ -159,6 +160,7 @@ void Usuario::ejercitarRutina(const Rutina & routine){
         
         if  (restedFactor <= 2){
             cout << setw(10) << this->nombre << "esta demasiado cansado para hacer ejercicio" << endl;
+            cout << endl;
             return;
         }
         
