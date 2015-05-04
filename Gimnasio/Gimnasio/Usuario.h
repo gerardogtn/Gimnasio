@@ -53,8 +53,8 @@ public:
         return userID;
     };
     
-    vector<Rutina> getRutinas() const {
-        return rutinas; 
+    vector<Rutina> * getRutinas() {
+        return &rutinas;
     }
     
     void setAvgRep(int averageRep){
@@ -69,6 +69,7 @@ public:
         }
     };
     
+    Rutina * getRutinaAt(const int position);
     void hacerEjercicio(const Maquina & machine); 
 
     void addRutina(const Rutina & routine);

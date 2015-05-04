@@ -16,12 +16,12 @@ int Rutina::routineCount = 0;
 //  EFFECTS: If the machinetype and rutine type is the same, adds machine to equipo. Otherwise,
 //           notifies the user by printing to console and does nothing.
 void Rutina::addEquipment(const Maquina & machine){
-    /*
+    
     if (machine.getTipo() == this->getTipo()) {
         equipo.push_back(machine);
         return;
     }
-    */
+    
     cout << "No se puede agregar la maquina, pues el tipo de ejercicio realizado en la maquina" << endl;
     cout << "no coincide con el tipo de ejercicio de esta rutina" << endl;
     
@@ -33,7 +33,9 @@ void Rutina::addEquipment(const Maquina & machine){
 // Overloads stream output operator.
 ostream & operator<<(ostream & os, const Rutina & rutina)
 {
-    os << "La rutina numero: " << setw(2) << rutina.routineID << "es de tipo: " << rutina.getTipo() << endl;
+    os << "------------------------------------------------------" << endl;
+    os << "Rutina numero: " << setw(2) << rutina.routineID << "de tipo: " << rutina.getTipo() << endl;
+    os << "------------------------------------------------------" << endl;
     os << "Las maquinas utilizadas en esta rutina son:  " << std::endl;
     
     rutina.printEquipment();
@@ -48,15 +50,13 @@ ostream & operator<<(ostream & os, const Rutina & rutina)
 void Rutina::printEquipment() const{
     
     if (equipo.empty()) {
-        cout << "Esta rutina no tiene maquinas todavia" << endl;
+        cout << "          Esta rutina no tiene maquinas todavia" << endl;
         return; 
     }
     
-    //std::cout << "Esta rutina usa las máquinas: " << std::endl;
-    
     for (auto e: equipo)
     {
-        std::cout << e << std::endl;
+        std::cout << "          " << e << std::endl;
     }
     
     std::cout << std::endl;

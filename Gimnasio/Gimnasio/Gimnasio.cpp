@@ -166,8 +166,12 @@ int Gimnasio::findMachine(const int machineID) const{
 }
 
 
-
-
+// REQUIRES: Position is valid.
+// MODIFIES: usuario.
+// EFFECTS : Returns a pointer to a user.
+Usuario * Gimnasio::getUserAt(const int position){
+    return &usuarios[position];
+}
 
 
 

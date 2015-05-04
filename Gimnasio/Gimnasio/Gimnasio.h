@@ -29,8 +29,7 @@ class Gimnasio{
     
     
 private:
-    //list<Usuario> usuarios;
-    
+    vector<Usuario> usuarios;
     // Un mapa que almacena las maquinas y el numero de maquinas.
     map<Maquina, int> maquinas;
     
@@ -41,14 +40,9 @@ private:
 public:
     Gimnasio(){};
     Gimnasio(string name) : gymName(name){};
-    vector<Usuario> usuarios;
     
-    vector<Usuario> getUsuarios() const{
-        vector<Usuario> output;
-        for (auto u : usuarios){
-            output.push_back(u);
-        }
-        return output; 
+    vector<Usuario> * getUsuarios() {
+        return &usuarios;
     }
     
     vector<Maquina> getMaquinas() const {
@@ -70,7 +64,8 @@ public:
     void printMachines() const;
     
     int findUser(const int userID) const;
-    int findMachine(const int machineID) const; 
+    int findMachine(const int machineID) const;
+    Usuario * getUserAt(const int position);
     
 };
 

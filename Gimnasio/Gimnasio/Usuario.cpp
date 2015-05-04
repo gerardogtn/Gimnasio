@@ -85,6 +85,8 @@ void Usuario::printRutinas() const{
     if (rutinas.empty()) {
         cout << "No existe ninguna rutina para el usuario: "<< setw(20) << nombre;
         cout << setw(20) << apellido << ":(" << endl;
+        cout << endl;
+        cout << endl; 
         return;
     }
     
@@ -97,6 +99,7 @@ void Usuario::printRutinas() const{
         cout << i << endl;
         j++;
     }
+    cout << endl; 
 }
 
 
@@ -125,6 +128,11 @@ int  Usuario::findRutina(const int routineID) const{
 }
 
 
-
+// REQUIRES: Position is a valid one.
+// MODIFIES: rutina.
+// EFFECTS : Returns a pointer to the rutina given.
+Rutina * Usuario::getRutinaAt(const int position){
+    return &rutinas[position];
+}
 
 
