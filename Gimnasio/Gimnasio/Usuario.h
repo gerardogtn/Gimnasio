@@ -76,6 +76,8 @@ public:
     void printRutinas() const;
     int  findRutina(const int routineID) const;
     void removeRutina(const int);
+    
+    void ejercitarRutina(const Rutina & routine);
 };
 
 

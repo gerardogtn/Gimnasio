@@ -139,4 +139,34 @@ Rutina * Usuario::getRutinaAt(const int position){
     return &rutinas[position];
 }
 
+// REQUIRES: None.
+// MODIFIES: None.
+//  EFFECTS: Simulates that a user is performing a routine.
+void Usuario::ejercitarRutina(const Rutina & routine){
+    if  (restedFactor <= 2){
+        cout << setw(10) << this->nombre << "esta demasiado cansado para hacer ejercicio" << endl;
+        return;
+    }
+    
+    cout << "-----------------------------------------------------------------" << endl;
+    cout << setw(10) << this->nombre <<"esta haciendo rutina de: ";
+    cout << setw(3) << routine.getTipo() << endl;
+    cout << "-----------------------------------------------------------------" << endl;
+    
+    
+    
+    for (auto e : routine.getEquipment()) {
+        
+        if  (restedFactor <= 2){
+            cout << setw(10) << this->nombre << "esta demasiado cansado para hacer ejercicio" << endl;
+            return;
+        }
+        
+        this->hacerEjercicio(e);
+    }
+}
+
+
+
+
 

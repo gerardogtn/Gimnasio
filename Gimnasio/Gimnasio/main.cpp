@@ -48,20 +48,20 @@ int main(int argc, const char * argv[]) {
     int option=1;
     while (option!=13)
     {
-        std::cout << "Bienvenido a sports world."                                     << std::endl;
-        std::cout << "1. Registrar nuevo usuario."                                    << std::endl;
-        std::cout << "2. Eliminar un usuario."                                        << std::endl;
-        std::cout << "3. Registrar una nueva máquina."                                << std::endl;
-        std::cout << "4. Eliminar una maquina."                                       << std::endl;
-        std::cout << "5. Mostrar la cantidad de usuarios y de máquinas del gimnasio." << std::endl;
-        std::cout << "6. Mostrar las máquinas disponibles."                           << std::endl;
-        std::cout << "7. Mostrar los usuarios del gimnasio."                          << std::endl;
-        std::cout << "8. Crear una nueva rutina a un usuario."                        << std::endl;
-        std::cout << "9. Eliminar una rutina de un usuario."                          << std::endl;
-        std::cout << "10. Adicionar una maquina a una rutina existente. "             << std::endl;
-        std::cout << "11. Eliminar una máquina de una rutina existente. "             << std::endl;
-        std::cout << "12. Mostrar las rutinas de un usuario."                         << std::endl;
-        std::cout << "13. Salir \n"                                                   << std::endl;
+        std::cout << "                    Bienvenido a sports world."                  << std::endl;
+        std::cout << "1.  Registrar nuevo usuario."                                    << std::endl;
+        std::cout << "2.  Eliminar un usuario."                                        << std::endl;
+        std::cout << "3.  Registrar una nueva máquina."                                << std::endl;
+        std::cout << "4.  Eliminar una maquina."                                       << std::endl;
+        std::cout << "5.  Mostrar la cantidad de usuarios y de máquinas del gimnasio." << std::endl;
+        std::cout << "6.  Mostrar las máquinas disponibles."                           << std::endl;
+        std::cout << "7.  Mostrar los usuarios del gimnasio."                          << std::endl;
+        std::cout << "8.  Crear una nueva rutina a un usuario."                        << std::endl;
+        std::cout << "9.  Eliminar una rutina de un usuario."                          << std::endl;
+        std::cout << "10. Adicionar una maquina a una rutina existente. "              << std::endl;
+        std::cout << "11. Eliminar una máquina de una rutina existente. "              << std::endl;
+        std::cout << "12. Mostrar las rutinas de un usuario."                          << std::endl;
+        std::cout << "13. Salir \n"                                                    << std::endl;
         std::cin >> option;
         option = getInt(option);
         switch (option)
@@ -127,13 +127,12 @@ int main(int argc, const char * argv[]) {
                 std::cin >> machineID;
                 machineID = getInt(machineID);
                 
-                int machinePosition = sportsWorld.findMachine(machineID);
-                if (machinePosition == -1) {
+                if (sportsWorld.findMachine(machineID) == -1) {
                     cout << "No existe esa máquina en este gimnasio." << endl;
                     break;
                 }
                 
-                sportsWorld.removeMachine(machinePosition);
+                sportsWorld.removeMachine(machineID);
                 cout << "Máquina eliminada" << endl;
                 }
                 

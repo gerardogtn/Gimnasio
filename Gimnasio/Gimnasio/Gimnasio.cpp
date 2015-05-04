@@ -177,8 +177,36 @@ void Gimnasio::removeUser(const int position){
     usuarios.erase(usuarios.begin()+position);
 }
 
-void Gimnasio::removeMachine(const int position){
-
+// REQUIRES: Position is valid.
+// MODIFIES: usuario.
+// EFFECTS : Removes a machine at a 
+void Gimnasio::removeMachine(const int machineID){
+    
+    
+    
+    for (auto m : maquinas) {
+        Maquina currentMachine = m.first;
+        int currentMachineID = currentMachine.getMachineID();
+        
+        if (currentMachineID == machineID && m.second <= 1) {
+            
+            cout << "La maquina " << setw(10) << currentMachine.getMachineName();
+            cout << " Con numero de identificacion: " << setw(2) <<currentMachineID;
+            cout << " Ha sido eliminada correctamente " << endl;
+            maquinas.erase(currentMachine);
+            return;
+            
+        } else if (currentMachineID == machineID){
+            cout << "La maquina " << setw(10) << currentMachine.getMachineName();
+            cout << " Con numero de identificacion: " << setw(2) <<currentMachineID;
+            cout << " Ha sido eliminada correctamente " << endl;
+            maquinas[currentMachine]--;
+            machineCount--; 
+            return;
+        }
+    }
+    
+    
 }
 
 
