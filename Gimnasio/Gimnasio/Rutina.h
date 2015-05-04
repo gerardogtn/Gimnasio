@@ -40,6 +40,7 @@ public:
     
     void addEquipment(const Maquina & machine);
     void addEquipment(const int equipmentID);
+    void removeEquipment(const int equipmentID);
     void printEquipment() const;
     vector<Maquina> getEquipment() const;
     

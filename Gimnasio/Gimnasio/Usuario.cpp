@@ -75,6 +75,10 @@ void Usuario::addRutina(const Rutina & routine) {
     rutinas.push_back(routine);
 }
 
+void Usuario::removeRutina(const int position){
+    rutinas.erase(rutinas.begin()+position);
+}
+
 
 
 // REQUIRES: None.

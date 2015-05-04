@@ -46,18 +46,22 @@ int main(int argc, const char * argv[]) {
     
     // Menú de Opciones para el Usuario
     int option=1;
-    while (option!=9)
+    while (option!=13)
     {
-        std::cout << "Bienvenido a Sports World."                                     << std::endl;
-        std::cout << "1. Registrar Nuevo Usuario."                                    << std::endl;
-        std::cout << "2. Registrar una Nueva Máquina."                                << std::endl;
-        std::cout << "3. Mostrar la Cantidad de Usuarios y de Máquinas del Gimnasio." << std::endl;
-        std::cout << "4. Mostrar las Máquinas Disponibles."                           << std::endl;
-        std::cout << "5. Mostrar los Usuarios del Gimnasio."                          << std::endl;
-        std::cout << "6. Crear una nueva rutina a un usuario."                        << std::endl;
-        std::cout << "7. Adicionar una maquina a una rutina existente. "              << std::endl;
-        std::cout << "8. Mostrar las rutinas de un usuario."                          << std::endl;
-        std::cout << "9. Salir \n"                                                     << std::endl;
+        std::cout << "Bienvenido a sports world."                                     << std::endl;
+        std::cout << "1. Registrar nuevo usuario."                                    << std::endl;
+        std::cout << "2. Eliminar un usuario."                                        << std::endl;
+        std::cout << "3. Registrar una nueva máquina."                                << std::endl;
+        std::cout << "4. Eliminar una maquina."                                       << std::endl;
+        std::cout << "5. Mostrar la cantidad de usuarios y de máquinas del gimnasio." << std::endl;
+        std::cout << "6. Mostrar las máquinas disponibles."                           << std::endl;
+        std::cout << "7. Mostrar los usuarios del gimnasio."                          << std::endl;
+        std::cout << "8. Crear una nueva rutina a un usuario."                        << std::endl;
+        std::cout << "9. Eliminar una rutina de un usuario."                          << std::endl;
+        std::cout << "10. Adicionar una maquina a una rutina existente. "             << std::endl;
+        std::cout << "11. Eliminar una máquina de una rutina existente. "             << std::endl;
+        std::cout << "12. Mostrar las rutinas de un usuario."                         << std::endl;
+        std::cout << "13. Salir \n"                                                   << std::endl;
         std::cin >> option;
         option = getInt(option);
         switch (option)
@@ -78,8 +82,27 @@ int main(int argc, const char * argv[]) {
                 
                 break;
                 
-                
             case 2:{
+                
+                /* Eliminar USUARIO */
+                int userID;
+                std::cout << "Ingresa el número de usuario que quieres eliminar: " << std::endl;
+                std::cin >> userID;
+                userID = getInt(userID);
+                
+                int userPosition = sportsWorld.findUser(userID);
+                if (userPosition == -1) {
+                    cout << "No existe el usuario en este gimnasio." << endl;
+                    break;
+                }
+                
+                sportsWorld.removeUser(userPosition);
+                cout << "Usuario eliminado" << endl;
+                }
+                
+                break;    
+                
+            case 3:{
                 /* REGISTRAR MAQUINA */
                 std::string name;
                 std::cout << "Ingresa el nombre de la máquina a agregar"<<std::endl;
@@ -95,9 +118,28 @@ int main(int argc, const char * argv[]) {
                 }
                 
                 break;
+            
+            case 4:{
                 
+                /* Eliminar Máquina */
+                int machineID;
+                std::cout << "Ingresa el número de máquina que quieres eliminar: " << std::endl;
+                std::cin >> machineID;
+                machineID = getInt(machineID);
                 
-            case 3: {
+                int machinePosition = sportsWorld.findMachine(machineID);
+                if (machinePosition == -1) {
+                    cout << "No existe esa máquina en este gimnasio." << endl;
+                    break;
+                }
+                
+                sportsWorld.removeMachine(machinePosition);
+                cout << "Máquina eliminada" << endl;
+                }
+                
+                break;     
+                
+            case 5: {
                 /* IMPRIMIR CANTIDAD DE USUARIOS Y MAQUINAS */
                 std::cout << sportsWorld;
                 }
@@ -105,14 +147,14 @@ int main(int argc, const char * argv[]) {
                 break;
                 
                 
-            case 4: {
+            case 6: {
                 /* IMPRIMIR LAS MAQUINAS DEL GIMNASIO */
                 sportsWorld.printMachines();
                 }
                 break;
                 
                 
-            case 5: {
+            case 7: {
                 /* IMPRIMIR LOS USUARIOS DEL GIMNASIO */ 
                 sportsWorld.printUsers();
                 }
@@ -120,7 +162,7 @@ int main(int argc, const char * argv[]) {
                 break;
                 
                 
-            case 6: {
+            case 8: {
                 /* CREAR UNA RUTINA */
                 string rutineType;
                 cout << "¿Que tipo de rutina quieres agregar?" << endl;
@@ -146,8 +188,45 @@ int main(int argc, const char * argv[]) {
                 }
                 
                 break;
+            
+            case 9: {
+                /* ELIMINAR UNA RUTINA */
+                int userID;
+                std::cout << "Ingresa el número de usuario al que se le quitará una rutina" << std::endl;
+                std::cin >> userID;
+                userID = getInt(userID);
                 
-            case 7: {
+                int userPosition = sportsWorld.findUser(userID);
+                
+                vector<Usuario> usuarios = *sportsWorld.getUsuarios();
+                usuarios[userPosition].printRutinas();
+                
+                if (userPosition == -1) {
+                    cout << "No existe el usuario en este gimnasio." << endl;
+                } else {
+                    
+                    int routineID;
+                    std::cout << "Ingresa el número de rutina a modificar: " << std::endl;
+                    std::cin >> routineID;
+                    routineID = getInt(routineID);
+                    
+                    Usuario * workingUser = sportsWorld.getUserAt(userPosition);
+                    
+                    int routinePos = workingUser->findRutina(routineID);
+                    if (routinePos == -1) {
+                    cout << "No existe esa rutina para este usuario." << endl;
+                    break;
+                    }
+                    
+                    sportsWorld.getUsuarios()->at(userPosition).removeRutina(routinePos);
+                }
+                
+                
+                }
+                
+                break;    
+                
+            case 10: {
                 /* ANADIR UNA MAQUINA A UNA RUTINA */
                 int userID;
                 std::cout << "Ingresa el número de usuario al que se le modificara su rutina: " << std::endl;
@@ -195,22 +274,8 @@ int main(int argc, const char * argv[]) {
                 cout << " del usuario: " << setw(15) << workingUser->getName() << endl << endl;
             }
             break;
-                
-            case 8: {
-                /* IMPRIMIR LAS RUTINAS DE UN USUARIO */
-                int userID;
-                std::cout << "Ingresa el número de usuario cuyas rutinas quieres ver" << std::endl;
-                std::cin >> userID;
-                userID = getInt(userID);
-                
-                int userPosition = sportsWorld.findUser(userID);
-                
-                if (userPosition == -1) {
-                    cout << "No existe el usuario en este gimnasio." << endl;
-                } else {
-                    vector<Usuario> usuarios = *sportsWorld.getUsuarios();
-                    usuarios[userPosition].printRutinas();
-                }
+            
+            case 11: {
                 
                 }
             break;

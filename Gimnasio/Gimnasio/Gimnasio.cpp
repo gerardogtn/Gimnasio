@@ -173,5 +173,12 @@ Usuario * Gimnasio::getUserAt(const int position){
     return &usuarios[position];
 }
 
+void Gimnasio::removeUser(const int position){
+    usuarios.erase(usuarios.begin()+position);
+}
+
+void Gimnasio::removeMachine(const int position){
+
+}
 
 

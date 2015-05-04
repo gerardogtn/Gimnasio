@@ -60,6 +60,9 @@ public:
     void addUser(const string userName, const string userLastName);
     void addMachine(const Maquina machine);
     
+    void removeUser(const int);
+    void removeMachine(const int);
+    
     void printUsers() const;
     void printMachines() const;
     

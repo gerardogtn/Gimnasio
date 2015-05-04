@@ -124,3 +124,8 @@ string Rutina::getTipo() const {
     
     return output;
 }
+
+void removeEquipment(const int equipmentID){
+    
+    
+}
