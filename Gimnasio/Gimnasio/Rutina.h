@@ -38,8 +38,8 @@ public:
     void setTipo(string tipoString);
     string getTipo() const;
     
-    void addEquipment(const Maquina & machine);
-    void addEquipment(const int equipmentID);
+    bool addEquipment(const Maquina & machine);
+    bool addEquipment(const int equipmentID);
     void removeEquipment(const int equipmentID);
     void printEquipment() const;
     vector<Maquina> getEquipment() const;

@@ -174,6 +174,7 @@ Usuario * Gimnasio::getUserAt(const int position){
 }
 
 void Gimnasio::removeUser(const int position){
+    userCount--; 
     usuarios.erase(usuarios.begin()+position);
 }
 
@@ -193,7 +194,15 @@ void Gimnasio::removeMachine(const int machineID){
             cout << "La maquina " << setw(10) << currentMachine.getMachineName();
             cout << " Con numero de identificacion: " << setw(2) <<currentMachineID;
             cout << " Ha sido eliminada correctamente " << endl;
+            
+            for (auto u :usuarios) {
+                for (auto r : *u.getRutinas()) {
+                    r.removeEquipment(machineID); 
+                }
+            }
+            
             maquinas.erase(currentMachine);
+            machineCount--;
             return;
             
         } else if (currentMachineID == machineID){

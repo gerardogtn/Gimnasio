@@ -163,6 +163,7 @@ void Usuario::ejercitarRutina(const Rutina & routine){
         }
         
         this->hacerEjercicio(e);
+        sleep(2);
     }
 }
 

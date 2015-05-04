@@ -15,16 +15,16 @@ int Rutina::routineCount = 0;
 // MODIFIES: this->equipo.
 //  EFFECTS: If the machinetype and rutine type is the same, adds machine to equipo. Otherwise,
 //           notifies the user by printing to console and does nothing.
-void Rutina::addEquipment(const Maquina & machine){
+bool Rutina::addEquipment(const Maquina & machine){
     
     if (machine.getTipo() == this->getTipo()) {
         equipo.push_back(machine);
-        return;
+        return true;
     }
     
     cout << "No se puede agregar la maquina, pues el tipo de ejercicio realizado en la maquina" << endl;
     cout << "no coincide con el tipo de ejercicio de esta rutina" << endl;
-    
+    return false; 
 }
 
 // REQUIRES: None.
@@ -125,7 +125,23 @@ string Rutina::getTipo() const {
     return output;
 }
 
-void removeEquipment(const int equipmentID){
+// REQUIRES: None.
+// MODIFIES: this->equipo
+//  EFFECTS: Removes a machine from equipo.
+void Rutina::removeEquipment(const int equipmentID){
+    int position = 0;
     
+    for (auto e: equipo) {
+        if (e.getMachineID() == equipmentID) {
+            cout << "La maquina con identificacion " << setw(2) << e.getMachineID();
+            cout << "Ha sido eliminada correctamente de la rutina con identificacion ";
+            cout << setw(3) << routineID << endl;
+            equipo.erase(equipo.begin() + position);
+            return;
+        }
+        position++;
+    }
+    
+    cout << "La maquina no se encuentra en esta rutina." << endl;
     
 }
